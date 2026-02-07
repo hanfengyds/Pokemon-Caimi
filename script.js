@@ -42,10 +42,6 @@ let correctModal;
 let correctMessage;
 let nextPuzzleBtn;
 let returnMenuBtn;
-let designerScreen;
-let designerModeBtn;
-let backFromDesignerBtn;
-let designerContainer;
 let typeBagBtn;
 let magnifierBtn;
 
@@ -74,10 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
     correctMessage = document.getElementById('correct-message');
     nextPuzzleBtn = document.getElementById('next-puzzle');
     returnMenuBtn = document.getElementById('return-menu');
-    designerScreen = document.getElementById('designer-screen');
-    designerModeBtn = document.getElementById('designer-mode');
-    backFromDesignerBtn = document.getElementById('back-from-designer');
-    designerContainer = document.getElementById('designer-container');
     typeBagBtn = document.getElementById('type-bag');
     magnifierBtn = document.getElementById('magnifier');
     
@@ -239,10 +231,6 @@ function setupEventListeners() {
     
     // 图鉴界面按钮
     if (backFromPokedexBtn) backFromPokedexBtn.addEventListener('click', showMenu);
-    
-    // 设计者模式按钮
-    if (designerModeBtn) designerModeBtn.addEventListener('click', showDesigner);
-    if (backFromDesignerBtn) backFromDesignerBtn.addEventListener('click', showMenu);
     
     // 弹窗按钮
     if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
@@ -857,7 +845,6 @@ function showPuzzle() {
     menuScreen.classList.remove('active');
     puzzleScreen.classList.add('active');
     pokedexScreen.classList.remove('active');
-    designerScreen.classList.remove('active');
     
     // 获取锦囊容器
     const bagContainer = document.querySelector('.bag-container');
@@ -954,52 +941,6 @@ function viewPokedex() {
     pokedexScreen.classList.add('active');
     designerScreen.classList.remove('active');
     updatePokedex();
-}
-
-// 显示设计者模式界面
-function showDesigner() {
-    menuScreen.classList.remove('active');
-    puzzleScreen.classList.remove('active');
-    pokedexScreen.classList.remove('active');
-    designerScreen.classList.add('active');
-    
-    // 显示谜题列表
-    designerContainer.innerHTML = '';
-    const titleElement = document.createElement('h3');
-    titleElement.textContent = '选择谜题';
-    designerContainer.appendChild(titleElement);
-    
-    puzzles.forEach((puzzle, index) => {
-        const puzzleElement = document.createElement('div');
-        puzzleElement.className = 'puzzle-item';
-        puzzleElement.innerHTML = `
-            <button class="select-puzzle-btn" data-index="${index}">
-                谜题 ${puzzle.id}: ${puzzle.name}
-            </button>
-        `;
-        designerContainer.appendChild(puzzleElement);
-    });
-    
-    // 添加选择谜题的事件监听器
-    document.querySelectorAll('.select-puzzle-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const index = parseInt(this.getAttribute('data-index'));
-            selectPuzzle(index);
-        });
-    });
-}
-
-// 选择特定谜题
-function selectPuzzle(index) {
-    currentPuzzleIndex = index;
-    currentPuzzle = puzzles[index];
-    // 重置线索区标题
-    const mediaSectionH3 = document.querySelector('.media-section h3');
-    if (mediaSectionH3) {
-        mediaSectionH3.innerHTML = '线索区';
-        mediaSectionH3.style.display = 'block';
-    }
-    startGame();
 }
 
 // 渲染谜题提示

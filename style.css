@@ -27,9 +27,14 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.7);
+    background-image: url('background/八骏图.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     z-index: -1;
 }
+
+
 
 #game-container {
     width: 100%;
@@ -93,12 +98,14 @@ body {
 }
 
 #menu-screen h1 {
-    font-size: 3em;
+    font-size: 4em;
     margin-bottom: 40px;
+    color: red;
+    text-shadow: 3px 3px 0px rgb(255, 179, 0);
 }
 
 .greeting-text {
-    font-size: 1.2em;
+    font-size: 2em;
     color: #ff6b6b;
     margin-bottom: 5px;
     margin-top: 10px;
@@ -128,17 +135,18 @@ body {
 .menu-buttons button {
     padding: 15px 30px;
     font-size: 1.2em;
-    background-color: #3498db;
+    background-color: red;
     color: white;
-    border: none;
+    border: 3px solid gold;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
     width: 100%;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
 }
 
 .menu-buttons button:hover {
-    background-color: #2980b9;
+    background-color: #cc0000;
 }
 
 .score-display {
@@ -179,11 +187,11 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 50px;
-    height: 300px;
+    width: 60px;
+    height: 350px;
     background-color: red;
     color: black;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     border: 3px solid yellow;
     display: flex;
@@ -191,7 +199,7 @@ body {
     justify-content: center;
     writing-mode: vertical-rl;
     text-orientation: upright;
-    letter-spacing: 12px;
+    letter-spacing: 22px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     cursor: default;
 }

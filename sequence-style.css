@@ -8,6 +8,7 @@
     margin: 0 auto;
     padding: 20px;
     display: flex;
+    flex-wrap: wrap;
     gap: 30px;
 }
 
@@ -67,6 +68,8 @@
     border-radius: 5px;
     background-color: #f9f9f9;
     transition: all 0.3s ease;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .sequence-slot {

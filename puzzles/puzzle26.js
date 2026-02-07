@@ -1,7 +1,7 @@
 // 谜题26数据 - 选择题
 const puzzle26 = {
     id: 26,
-    name: "选择题",
+    name: "万能伞",
     type: "judgment",
     typeCost: 2,
     types: ["特殊"],

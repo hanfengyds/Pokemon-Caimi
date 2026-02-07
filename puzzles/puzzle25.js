@@ -1,7 +1,7 @@
 // 谜题25数据 - 选择题
 const puzzle25 = {
     id: 25,
-    name: "选择题",
+    name: "叱吼霸",
     type: "judgment",
     typeCost: 2,
     types: ["特殊"],

@@ -1,7 +1,7 @@
 // 谜题24数据 - 选择题
 const puzzle24 = {
     id: 24,
-    name: "选择题",
+    name: "三首恶龙",
     type: "judgment",
     typeCost: 2,
     types: ["特殊"],

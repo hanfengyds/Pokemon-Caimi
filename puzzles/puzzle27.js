@@ -1,7 +1,7 @@
 // 谜题27数据 - 输入题
 const puzzle27 = {
     id: 27,
-    name: "输入题",
+    name: "泰兰特",
     type: "input",
     typeCost: 2,
     types: ["特殊"],
