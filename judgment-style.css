@@ -1,0 +1,106 @@
+/* 判断题样式 */
+.judgment-puzzle {
+    display: none;
+}
+
+.judgment-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.judgment-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.judgment-image-section {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+#judgment-image {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 5px;
+}
+
+.judgment-question-section {
+    flex: 2;
+    min-width: 600px;
+}
+
+#judgment-question {
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: left;
+    line-height: 1.5;
+}
+
+#judgment-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 100%;
+}
+
+.judgment-option {
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.judgment-option:hover {
+    background-color: #f0f0f0;
+}
+
+.judgment-option.selected {
+    border-color: #007bff;
+    background-color: #e3f2fd;
+}
+
+.judgment-option.correct {
+    border-color: #28a745;
+    background-color: #d4edda;
+}
+
+.judgment-option.incorrect {
+    border-color: #dc3545;
+    background-color: #f8d7da;
+}
+
+.judgment-answer-section {
+    margin-top: 30px;
+    text-align: center;
+    width: 100%;
+}
+
+#submit-judgment {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#submit-judgment:hover {
+    background-color: #0069d9;
+}
+
+#submit-judgment:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}

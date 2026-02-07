@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宝可梦猜谜游戏</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="judgment-style.css">
+    <link rel="stylesheet" href="sequence-style.css">
+    <script src="puzzles/puzzle1.js"></script>
+    <script src="puzzles/puzzle2.js"></script>
+    <script src="puzzles/puzzle3.js"></script>
+    <script src="puzzles/puzzle4.js"></script>
+    <script src="puzzles/puzzle5.js"></script>
+    <script src="puzzles/puzzle6.js"></script>
+    <script src="puzzles/puzzle7.js"></script>
+    <script src="puzzles/puzzle8.js"></script>
+    <script src="puzzles/puzzle9.js"></script>
+    <script src="puzzles/puzzle10.js"></script>
+    <script src="puzzles/puzzle11.js"></script>
+    <script src="puzzles/puzzle12.js"></script>
+    <script src="puzzles/puzzle13.js"></script>
+    <script src="puzzles/puzzle14.js"></script>
+    <script src="puzzles/puzzle15.js"></script>
+    <script src="puzzles/puzzle16.js"></script>
+    <script src="puzzles/puzzle17.js"></script>
+    <script src="puzzles/puzzle18.js"></script>
+    <script src="puzzles/puzzle19.js"></script>
+    <script src="puzzles/puzzle20.js"></script>
+    <script src="puzzles/puzzle21.js"></script>
+    <script src="puzzles/puzzle22.js"></script>
+    <script src="puzzles/puzzle23.js"></script>
+    <script src="puzzles/puzzle24.js"></script>
+    <script src="puzzles/puzzle25.js"></script>
+    <script src="puzzles/puzzle26.js"></script>
+    <script src="puzzles/puzzle27.js"></script>
+    <script src="puzzles/puzzle28.js"></script>
+    <script src="puzzles/puzzle29.js"></script>
+    <script src="puzzles/puzzle30.js"></script>
+    <script src="puzzles/puzzle31.js"></script>
+    <script src="puzzles/puzzle32.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <!-- 主菜单界面 -->
+        <div id="menu-screen" class="screen active">
+            <div class="side-button left-side">呆壳闭户诸邪莫近</div>
+            <h1>宝可梦猜谜游戏</h1>
+            <div class="greeting-text">🧨吧老师新年快乐🧨</div>
+            <div class="menu-buttons">
+                <button id="start-game">开始游戏</button>
+                <button id="reset-game">重置游戏</button>
+                <button id="view-pokedex">当前图鉴</button>
+                <button id="designer-mode">设计者模式</button>
+            </div>
+            <div class="author-info">
+                <img src="background/头像.png" alt="作者头像" class="author-avatar">
+                <span class="author-name">作者：@韩枫有点帅</span>
+            </div>
+            <div class="side-button right-side">钢翼腾空万刃皆休</div>
+        </div>
+
+        <!-- 谜题界面 -->
+        <div id="puzzle-screen" class="screen">
+            <div class="puzzle-header">
+                <div class="score-display">当前积分: <span id="puzzle-score">10</span></div>
+                <div class="game-rule">获得提示需要花费分数，找到那个被隐藏的宝可梦吧！</div>
+                <button id="back-to-menu">返回主菜单</button>
+            </div>
+            <div class="puzzle-content">
+                <!-- 普通谜题界面 -->
+                <div id="normal-puzzle" class="normal-puzzle">
+                    <div class="hints-section">
+                        <h3>提示</h3>
+                        <div id="hints-container"></div>
+                    </div>
+                    <div class="media-section">
+                        <div class="media-section-header">
+                            <h3>线索区</h3>
+                            <div id="type-hint-display" class="type-hint-display"></div>
+                        </div>
+                        <div id="media-container"></div>
+                        <div class="answer-section">
+                            <input type="text" id="answer-input" placeholder="输入谜底...">
+                            <button id="submit-answer">确认答案</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 连连看界面 -->
+                <div id="match-puzzle" class="match-puzzle">
+                    <div class="match-content">
+                        <div class="match-column">
+                            <h3>图片（找名字）</h3>
+                            <div id="image-items"></div>
+                        </div>
+                        <div class="match-column">
+                            <h3>名字</h3>
+                            <div id="name-items"></div>
+                        </div>
+                    </div>
+                    <div class="match-buttons">
+                        <button id="submit-match">提交答案</button>
+                    </div>
+                </div>
+                
+                <!-- 组合题界面 -->
+                <div id="combination-puzzle" class="combination-puzzle">
+                    <div class="combination-content">
+                        <div class="combination-items-section">
+                            <h3>原有的生物</h3>
+                            <div id="combination-items"></div>
+                        </div>
+                        <div class="combination-pools-section">
+                            <h3>生物拼接机（注意头尾顺序）</h3>
+                            <div id="combination-pools"></div>
+                        </div>
+                    </div>
+                    <div class="combination-buttons">
+                        <button id="submit-combination">提交答案</button>
+                    </div>
+                </div>
+                
+                <!-- 排序题界面 -->
+                <div id="sequence-puzzle" class="sequence-puzzle">
+                    <div class="sequence-content">
+                        <div class="sequence-image-section">
+                            <img id="sequence-image" src="" alt="题目图片">
+                            <h3 id="sequence-question"></h3>
+                        </div>
+                        <div class="sequence-items-section">
+                            <h3>待排序的饮料</h3>
+                            <div id="sequence-items"></div>
+                        </div>
+                        <div class="sequence-pools-section">
+                            <h3>排序池（按顺序排列）</h3>
+                            <div id="sequence-pool" class="sequence-pool">
+                                <div class="sequence-slot" data-index="0"></div>
+                                <div class="sequence-slot" data-index="1"></div>
+                                <div class="sequence-slot" data-index="2"></div>
+                                <div class="sequence-slot" data-index="3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sequence-buttons">
+                        <button id="submit-sequence">提交答案</button>
+                    </div>
+                </div>
+                
+                <!-- 判断题界面 -->
+                <div id="judgment-puzzle" class="judgment-puzzle">
+                    <div class="judgment-content">
+                        <div class="judgment-main">
+                            <div class="judgment-image-section">
+                                <img id="judgment-image" src="" alt="宝可梦">
+                            </div>
+                            <div class="judgment-question-section">
+                                <h3 id="judgment-question"></h3>
+                                <div id="judgment-options"></div>
+                            </div>
+                        </div>
+                        <div class="judgment-answer-section">
+                            <button id="submit-judgment">提交答案</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 图鉴界面 -->
+        <div id="pokedex-screen" class="screen">
+            <div class="pokedex-header">
+                <h2>宝可梦图鉴</h2>
+                <button id="back-from-pokedex">返回主菜单</button>
+            </div>
+            <div id="pokedex-container"></div>
+        </div>
+
+        <!-- 设计者模式界面 -->
+        <div id="designer-screen" class="screen">
+            <div class="puzzle-header">
+                <h2>设计者模式</h2>
+                <button id="back-from-designer">返回主菜单</button>
+            </div>
+            <div id="designer-container"></div>
+        </div>
+
+        <!-- 弹窗 -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <p id="modal-message"></p>
+                <div class="modal-buttons">
+                    <button id="modal-close">确定</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 答对弹窗 -->
+        <div id="correct-modal" class="modal">
+            <div class="modal-content">
+                <p id="correct-message"></p>
+                <div class="modal-buttons">
+                    <button id="next-puzzle">继续</button>
+                    <button id="return-menu">返回主菜单</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 锦囊容器 -->
+        <div class="bag-container">
+            <i id="type-bag" class="fas fa-scroll type-bag-icon"></i>
+            <i id="magnifier" class="fas fa-camera magnifier-icon"></i>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
